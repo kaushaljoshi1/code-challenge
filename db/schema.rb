@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_29_120421) do
+ActiveRecord::Schema.define(version: 2021_02_03_191821) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -51,10 +51,58 @@ ActiveRecord::Schema.define(version: 2020_10_29_120421) do
     t.string "zip_code"
     t.string "phone"
     t.string "email"
-    t.string "city"
-    t.string "state"
     t.string "services", default: [], array: true
+    t.bigint "owner_id", null: false
+    t.index ["owner_id"], name: "index_companies_on_owner_id"
+  end
+
+  create_table "companies_owners", id: false, force: :cascade do |t|
+    t.bigint "company_id", null: false
+    t.bigint "owner_id", null: false
+    t.index ["company_id", "owner_id"], name: "index_companies_owners_on_company_id_and_owner_id", unique: true
+  end
+
+  create_table "company_addresses", force: :cascade do |t|
+    t.bigint "company_id", null: false
+    t.string "state_code"
+    t.string "state_name"
+    t.string "city"
+    t.string "time_zone"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["company_id"], name: "index_company_addresses_on_company_id"
+  end
+
+  create_table "departments", force: :cascade do |t|
+    t.string "name"
+    t.bigint "company_id", null: false
+    t.string "phone"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["company_id"], name: "index_departments_on_company_id"
+  end
+
+  create_table "employees", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.bigint "department_id", null: false
+    t.text "qualifications"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["department_id"], name: "index_employees_on_department_id"
+  end
+
+  create_table "owners", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.string "email"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "companies", "owners"
+  add_foreign_key "company_addresses", "companies"
+  add_foreign_key "departments", "companies"
+  add_foreign_key "employees", "departments"
 end

@@ -14,6 +14,7 @@ gem "jbuilder",   "2.11.2"
 gem "bootsnap",   "1.6.0", require: false
 
 gem "zip-codes", "0.2.1"
+gem "cocoon"
 
 
 group :development, :test do

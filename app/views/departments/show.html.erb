@@ -1,0 +1,33 @@
+<div class="container py-5">
+
+  <h3>Department</h3>
+  <div class="row">
+    <div class="col">
+      <%= link_to "< Company", company_path(@department.company) %>
+    </div>
+  </div>
+  <div class="bg-success">
+    <div class="container p-5 text-white">
+      <h1><%= @department.name %> - <%= @department.company.name %></h1>
+    </div>
+  </div>
+
+  <div class="row bg-light">
+    <div class="col-12 col-lg-8 p-lg-5 pt-4">
+      <%= @department.description %>
+    </div>
+    <div class="col-12 col-lg-4 pt-lg-5">
+
+      <h4>Contact</h4>
+      <div class="form-group" data-controller="clipboard">
+        <p><%= @department.phone %><br>
+          <input type="hidden" value="<%= @department.phone %>" data-target="clipboard.source"></input>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="bg-success text-white text-center py-3">
+    <p class="lead"><%= @department.phone %></p>
+  </div>
+</div>

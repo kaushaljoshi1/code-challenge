@@ -1,0 +1,33 @@
+<div class='nested-fields'>
+  <div class="row my-lg-3">
+    <div class="col-lg-3">
+      <label><strong>Phone</strong><br><small class="text-muted">Department Phone</small></label>
+    </div>
+    <div class="col-lg offset-lg-1">
+      <div class="form-group">
+        <%= f.text_field :phone, class: "form-control", placeholder: "555-555-555", required: true %>
+  </div>
+    </div>
+  </div>
+  <div class="row my-lg-3">
+    <div class="col-lg-3">
+      <label><strong>Name</strong><br><small class="text-muted">Department Name</small></label>
+    </div>
+    <div class="col-lg offset-lg-1">
+      <div class="form-group">
+        <%= f.text_field :name, class: "form-control", placeholder: "Department Name", required: true %>
+      </div>
+  </div>
+  </div>
+  <div class="row my-lg-3">
+    <div class="col-lg-3">
+      <label><strong>Description</strong><br><small class="text-muted">Department Description</small></label>
+    </div>
+    <div class="col-lg offset-lg-1">
+      <div class="form-group">
+        <%= f.rich_text_area :description, class: "form-control", placeholder: "Department Description", required: true %>
+      </div>
+    </div>
+  </div>
+  <%= link_to_remove_association "Remove Department", f %>
+</div>

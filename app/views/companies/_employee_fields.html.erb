@@ -1,0 +1,33 @@
+<div class='nested-fields'>
+  <div class="row my-lg-3">
+    <div class="col-lg-3">
+      <label><strong>First Name</strong><br><small class="text-muted">First Name of the Employee</small></label>
+    </div>
+    <div class="col-lg offset-lg-1">
+      <div class="form-group">
+        <%= f.text_field :first_name, class: "form-control", placeholder: "First Name", required: true %>
+      </div>
+    </div>
+  </div>
+  <div class="row my-lg-3">
+    <div class="col-lg-3">
+      <label><strong>Last Name</strong><br><small class="text-muted">Last Name of the Employee</small></label>
+    </div>
+    <div class="col-lg offset-lg-1">
+      <div class="form-group">
+        <%= f.text_field :last_name, class: "form-control", placeholder: "Last Name", required: true %>
+      </div>
+    </div>
+  </div>
+  <div class="row my-lg-3">
+    <div class="col-lg-3">
+      <label><strong>Qualifications</strong><br><small class="text-muted">Qualificarions</small></label>
+    </div>
+    <div class="col-lg offset-lg-1">
+      <div class="form-group">
+        <%= f.rich_text_area :qualification, class: "form-control", placeholder: "Qualification of Employee", required: true %>
+      </div>
+    </div>
+  </div>
+  <%= link_to_remove_association "Remove Employee", f %>
+</div>

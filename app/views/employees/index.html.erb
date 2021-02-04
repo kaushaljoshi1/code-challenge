@@ -1,0 +1,15 @@
+<div class="container py-5">
+  <h3>Employees</h3>
+  <%= link_to "+ Create a Employee", new_employee_path %><br>
+  <% if @employees.empty? %>
+      <p>No Employees Found</p>
+  <% else %>
+      <ul class="list-group my-5">
+        <% @employees.each do |employee| %>
+            <a href="<%= employee_path(employee) %>" class="list-group-item list-group-item-action">
+              <%= employee.first_name + " " + employee.last_name %>
+            </a>
+        <% end %>
+      </ul>
+  <% end %>
+</div>

@@ -11,8 +11,7 @@
   <div class="bg-success">
     <div class="container p-5 text-white">
       <h1><%= @company.name %></h1>
-      <h3><mark>City, State</mark></h3>
-      <pre><mark>☝️ This is what needs to be updated. Examples: Atlanta, GA or Nashville, TN</mark></pre>
+      <h3><mark><%= @company.company_address&.city%>, <%=@company.company_address&.state_name%></mark></h3>
     </div>
   </div>
 
@@ -21,6 +20,10 @@
       <%= @company.description %>
     </div>
     <div class="col-12 col-lg-4 pt-lg-5">
+      <h4>Owner</h4>
+
+          <p><%= link_to @company.owner.first_name, owner_path(@company.owner) %></p>
+
       <h4>Services</h4>
       <% @company.services.reject(&:blank?).each do |service| %>
         <p><%= service %></p>
@@ -39,4 +42,19 @@
   <div class="bg-success text-white text-center py-3">
     <p class="lead"><%= @company.phone %> — <%= @company.email %></p>
   </div>
+</div>
+
+<div class="container py-5">
+  <h3>Departments</h3>
+  <% if @company.departments.empty? %>
+      <p>No Departments Found</p>
+  <% else %>
+      <ul class="list-group my-5">
+        <% @company.departments.each do |department| %>
+            <a href="<%= department_path(department) %>" target="_blank" class="list-group-item list-group-item-action">
+              <%= department.name %> - <%= department.phone%> <%= department.description %>
+            </a>
+        <% end %>
+      </ul>
+  <% end %>
 </div>

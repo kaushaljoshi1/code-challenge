@@ -2,7 +2,7 @@ class CompaniesController < ApplicationController
   before_action :set_company, except: [:index, :create, :new]
 
   def index
-    @companies = Company.all
+    @companies = Company.includes(:owner).all
   end
 
   def new
@@ -42,7 +42,9 @@ class CompaniesController < ApplicationController
         :phone,
         :email,
         :owner_id,
-        services: []
+        services: [],
+        departments_attributes: [[:id, :description,:phone, :name, :_destroy]]
+
       )
     end
 

@@ -14,4 +14,11 @@ class CompaniesControllerTest < ActionDispatch::IntegrationTest
     get company_path(@company)
     assert_response :success
   end
+
+  test "email should be unique" do
+    one = company(:one)
+    two = company(:two)
+    one.email = two.email
+    assert_not one.valid?
+  end
 end

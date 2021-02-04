@@ -1,0 +1,17 @@
+<p id="notice"><%= notice %></p>
+
+<div class="container py-5">
+  <h3>Owners</h3>
+  <%= link_to "+ Create an owner", new_owner_path %><br>
+  <% if @owners.empty? %>
+      <p>No Owners Found</p>
+  <% else %>
+      <ul class="list-group my-5">
+        <% @owners.each do |owner| %>
+            <a href="<%= owner_path(owner) %>" class="list-group-item list-group-item-action">
+              <%= owner.first_name+ " " +owner.last_name %>
+            </a>
+        <% end %>
+      </ul>
+  <% end %>
+</div>

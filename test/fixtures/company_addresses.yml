@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  company: one
+  state_code: MyString
+  state_name: MyString
+  city: MyString
+  time_zone: MyString
+
+two:
+  company: two
+  state_code: MyString
+  state_name: MyString
+  city: MyString
+  time_zone: MyString
